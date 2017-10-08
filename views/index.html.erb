@@ -1,0 +1,341 @@
+<head>
+  <title>Odds Converter</title>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.2/css/bulma.min.css">
+  <%= assets(:css) %>
+  <%= assets(:js) %>
+</head>
+<body>
+  <section class='section'>
+    <div class='container'>
+      <form id='form-multi'>
+        <div class='columns'>
+          <div class='column is-fullwidth is-expanded '>
+            <div class="field is-fullwidth is-expanded ">
+              <div class="field-body">
+                <div class="field has-addons control">
+                  <div class="control">
+                    <button type="button" class="button is-info">Title</button>
+                  </div>
+                  <div class="control is-expanded">
+                    <div class="field is-fullwidth">
+                      <input autocomplete="off" class="input name" id="name" name='name' placeholder="Enter a name (optional)">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class='columns main'>
+            
+          <div class='column is-narrow'>
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Odd Name</label>
+              </div>
+            </div>
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">American Odds</label>
+              </div>
+            </div>
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Decimal Odds</label>
+              </div>
+            </div>
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Fractional Odds</label>
+              </div>
+            </div>
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Implied Probability</label>
+              </div>
+            </div>
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Actual Probability</label>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <input type='button' value="Add Column" class="button is-info" id="add" />
+                  </div>
+                </div>
+              </div>
+              <div class="field-label">
+                <!-- Left empty for spacing -->
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <input type='submit' value="Calculate" class="button is-success" />
+                  </div>
+                </div>
+              </div>
+              <div class="field-label">
+                <!-- Left empty for spacing -->
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <input type='button' value="Reset All" id='reset' class="button is-danger" />
+                  </div>
+                </div>
+              </div>
+              <div class="field-label">
+                <!-- Left empty for spacing -->
+              </div>
+            </div>
+          </div>
+
+          <div class='column odd' data-order='0'>
+            <div class="field is-horizontal">
+              <div class="field-body">
+                <div class="field">
+                  <p class="control is-expanded has-icons-left">
+                    <div class="field">
+                      <p class="control is-expanded">
+                        <input autocomplete="off" class="input name" name='name' placeholder="Odd Name">
+                      </p>
+                    </div>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-body">
+                <div class="field">
+                  <p class="control is-expanded has-icons-left">
+                    <div class="field">
+                      <p class="control is-expanded">
+                        <input autocomplete="off" class="input value american" name='american' placeholder="Enter American odds" autofocus="true">
+                      </p>
+                    </div>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-body">
+                <div class="field">
+                  <p class="control is-expanded has-icons-left">
+                    <div class="field">
+                      <p class="control is-expanded">
+                        <input autocomplete="off" class="input value decimal" name='decimal' placeholder="Enter decimal odds">
+                      </p>
+                    </div>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-body">
+                <div class="field">
+                  <p class="control is-expanded has-icons-left">
+                    <div class="field">
+                      <p class="control is-expanded">
+                        <input autocomplete="off" class="input value fractional" name='fractional' placeholder="Enter fractional odds">
+                      </p>
+                    </div>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-body">
+                <div class="field">
+                  <p class="control is-expanded has-icons-left">
+                    <div class="field">
+                      <p class="control is-expanded">
+                        <input autocomplete="off" class="input value implied" name='implied' placeholder="Enter implied probability">
+                      </p>
+                    </div>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-body">
+                <div class="field">
+                  <p class="control is-expanded has-icons-left">
+                    <div class="field">
+                      <p class="control is-expanded">
+                        <input autocomplete="off" class="input value actual" name='actual' placeholder="Enter actual probability">
+                      </p>
+                    </div>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal hidden">
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <input type='button' value="Remove Column" class="button is-danger remove" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal extra">
+              <div class="field-body">
+                <div class="field">
+                  <p class="control is-expanded has-icons-left">
+                    <div class="field has-addons">
+                      <p class="control">
+                        <a class="button is-warning">
+                          Vig
+                        </a>
+                      </p>
+                      <p class="control is-expanded">
+                        <input autocomplete="off" class="input value vig" name='vig' disabled="true">
+                      </p>
+                    </div>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class='column odd' data-order='1'>
+            <div class="field is-horizontal">
+              <div class="field-body">
+                <div class="field">
+                  <p class="control is-expanded has-icons-left">
+                    <div class="field">
+                      <p class="control is-expanded">
+                        <input autocomplete="off" class="input name" name='name' placeholder="Odd Name">
+                      </p>
+                    </div>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-body">
+                <div class="field">
+                  <p class="control is-expanded has-icons-left">
+                    <div class="field">
+                      <p class="control is-expanded">
+                        <input autocomplete="off" class="input value american" name='american' placeholder="Enter American odds">
+                      </p>
+                    </div>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-body">
+                <div class="field">
+                  <p class="control is-expanded has-icons-left">
+                    <div class="field">
+                      <p class="control is-expanded">
+                        <input autocomplete="off" class="input value decimal" name='decimal' placeholder="Enter decimal odds">
+                      </p>
+                    </div>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-body">
+                <div class="field">
+                  <p class="control is-expanded has-icons-left">
+                    <div class="field">
+                      <p class="control is-expanded">
+                        <input autocomplete="off" class="input value fractional" name='fractional' placeholder="Enter fractional odds">
+                      </p>
+                    </div>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-body">
+                <div class="field">
+                  <p class="control is-expanded has-icons-left">
+                    <div class="field">
+                      <p class="control is-expanded">
+                        <input autocomplete="off" class="input value implied" name='implied' placeholder="Enter implied probability">
+                      </p>
+                    </div>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-body">
+                <div class="field">
+                  <p class="control is-expanded has-icons-left">
+                    <div class="field">
+                      <p class="control is-expanded">
+                        <input autocomplete="off" class="input value actual" name='actual' placeholder="Enter actual probability">
+                      </p>
+                    </div>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal hidden">
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <input type='button' value="Remove Column" class="button is-danger remove" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal extra">
+              <div class="field-body">
+                <div class="field">
+                  <p class="control is-expanded has-icons-left">
+                    <div class="field has-addons">
+                      <p class="control">
+                        <a class="button is-warning">
+                          Total Probability
+                        </a>
+                      </p>
+                      <p class="control is-expanded">
+                        <input autocomplete="off" class="input value total" name='total' disabled="true">
+                      </p>
+                    </div>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+        </div>
+      </form>
+    </div>
+  </section>
+</body>

@@ -1,0 +1,9 @@
+.column.is-narrow .field.is-horizontal {
+  height: 2.25em;
+}
+.hidden {
+  display: none !important;
+}
+.input[disabled] {
+  color: #000 !important;
+}

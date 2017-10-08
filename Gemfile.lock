@@ -1,0 +1,26 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    oddsmaker (0.1.1)
+    puma (3.10.0)
+    rack (2.0.3)
+    rake (12.1.0)
+    roda (3.0.0)
+      rack
+    tilt (2.0.8)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  oddsmaker
+  puma
+  rake
+  roda
+  tilt
+
+RUBY VERSION
+   ruby 2.4.1p111
+
+BUNDLED WITH
+   1.15.3
